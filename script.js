@@ -5,6 +5,7 @@ searchBtn.addEventListener('click', () => {
   let ApiKey = document.getElementById("apiInput").value.trim();
   let searchInput = document.getElementById("SearchInput");
   let url = `https://www.omdbapi.com/?s=${searchInput.value.trim()}&apikey=${ApiKey}`;
+  posterDiv.innerHTML = "";
   loader.style.display = "block";
   getData(url);
   searchInput.value = ""; // Use .value to set input value
@@ -30,7 +31,7 @@ function createUi(data, ApiKey) {
     let card = document.createElement("div");
     card.classList.add("single-card");
     cardInnerHtml = `<div class="poster">
-                            <img src="${movie.Poster}" alt="" />
+                            <img src="${movie.Poster}" alt="${movie.Title}" />
                         </div>
                               <div class="Movie-details-div">
                             <div class="card-no">${cardNumber++}</div>
